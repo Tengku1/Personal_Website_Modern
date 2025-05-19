@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tengku Website</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      height: 100%;
-      width: 100%;
-      background: black;
-    }
-    iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      border: none;
-    }
-  </style>
-</head>
-<body>
-  <iframe
-    src="https://youtu.be/xvFZjo5PgG0"
-    allow="autoplay; fullscreen"
-    allowfullscreen
-  ></iframe>
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: black;
+        overflow: hidden;
+      }
+      video {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="myVideo" autoplay loop playsinline>
+      <source src="rickroll.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
+    <script>
+      const video = document.getElementById("myVideo");
+      video.muted = false;
+      video.play().catch((err) => {
+        console.warn("Autoplay with sound failed, fallback to muted.", err);
+        video.muted = true;
+        video.play();
+      });
+    </script>
+  </body>
+</html>
